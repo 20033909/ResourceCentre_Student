@@ -68,6 +68,26 @@ public class ResourceCentreTest {
 	public void testAddChromebook() {
 		//fail("Not yet implemented");
 		// write your code here 
+		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		assertEquals("Test that the Chromebook arraylist is empty.", 0, chromebookList.size());
+		//Given an empty list, after adding 1 item, the size of the list is 1
+		ResourceCentre.addChromebook(chromebookList, cb1);		
+		assertEquals("Test that the Chromebook arraylist size is 1.", 1, chromebookList.size());
+		
+		// Add an item
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test that the Chromebook arraylist size is now 2.", 2, chromebookList.size());
+		//The item just added is as same as the last item in the list
+		assertSame("Test that Chromebook is added to the end of the list.", cb2, chromebookList.get(1));
+
+		// Add an item that already exists in the list
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		assertEquals("Test that the Chromebook arraylist size is unchange.", 2, chromebookList.size());
+
+		// Add an item that has missing detail
+		Chromebook cb_missing = new Chromebook("CB0014", "", "Win 10");
+		ResourceCentre.addChromebook(chromebookList, cb_missing);
+		assertEquals("Test that the Chromebook arraylist size is unchange.", 2, chromebookList.size());
 	}
 
 	@Test
@@ -111,6 +131,27 @@ public class ResourceCentreTest {
 	public void testRetrieveAllChromebook() {
 		//fail("Not yet implemented");
 		// write your code here
+		// Test Case 1: Test if the Chromebook list is not null but empty
+        assertNotNull("Test if there is a valid Chromebook arraylist to add to", chromebookList);
+        assertEquals("Test that the Chromebook arraylist is empty.", 0, chromebookList.size());
+        // Attempt to retrieve the Chromebooks
+        String allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+        String testOutput = "";
+        // Test if the output is empty
+        assertEquals("Test that nothing is displayed", testOutput, allChromebook);
+
+        // Test Case 2: Test if the Chromebook list contains items
+        ResourceCentre.addChromebook(chromebookList, cb1);
+        ResourceCentre.addChromebook(chromebookList, cb2);
+        // Test that the list is not empty
+        assertEquals("Test that Chromebook arraylist size is 2.", 2, chromebookList.size());
+        // Attempt to retrieve the Chromebooks
+        allChromebook = ResourceCentre.retrieveAllChromebook(chromebookList);
+        testOutput = String.format("%-10s %-30s %-10s %-10s\n", "CB0011", "My Google Chromebook 1st", "Yes", "");
+        testOutput += String.format("%-10s %-30s %-10s %-10s\n", "CB0012", "SAMSUNG Chromebook 4+", "Yes", "");
+        // Test that the details are displayed correctly
+        assertEquals("Test that the display is correct.", testOutput, allChromebook);
+		
 	}
 
 	@Test
