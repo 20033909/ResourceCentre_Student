@@ -1,5 +1,5 @@
 
-//test
+//test14Jul
 public class Camcorder extends Item{
 private int opticalZoom;
 
@@ -19,3 +19,4 @@ private int opticalZoom;
 	}
 }
 
+//Test2
