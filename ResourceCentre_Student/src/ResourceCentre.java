@@ -130,12 +130,20 @@ public class ResourceCentre {
 		String output = "";
 
 		for (int i = 0; i < camcorderList.size(); i++) {
+<<<<<<< HEAD
 			if (camcorderList.get(i).getIsAvailable()) {
 				output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
 						camcorderList.get(i).getDescription(),
 						ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
 						camcorderList.get(i).getDueDate(), camcorderList.get(i).getOpticalZoom());
 			}
+=======
+
+			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
+					camcorderList.get(i).getDescription(),
+					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
+					camcorderList.get(i).getDueDate(), camcorderList.get(i).getOpticalZoom());
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 		}
 		return output;
 	}
@@ -152,23 +160,38 @@ public class ResourceCentre {
 		String output = "";
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
+<<<<<<< HEAD
 			if (chromebookList.get(i).getIsAvailable()) {
 				output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
 						chromebookList.get(i).getDescription(),
 						ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
 						chromebookList.get(i).getDueDate(), chromebookList.get(i).getOs());
 			}
+=======
+
+			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
+					chromebookList.get(i).getDescription(),
+					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
+					chromebookList.get(i).getDueDate(), chromebookList.get(i).getOs());
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 		}
 		return output;
 	}
 
 	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
+<<<<<<< HEAD
 		// write your code here
 		ResourceCentre.setHeader("CHROMEBOOK LIST");
 		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", "AVAILABLE",
 				"DUE DATE", "OPERATING SYSTEM");
 		output += retrieveAllChromebook(chromebookList);
 		// String output = retrieveAllChromebook(chromebookList);
+=======
+		ResourceCentre.setHeader("CHROMEBOOK LIST");
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", "AVAILABLE",
+				"DUE DATE", "OPERATING SYSTEM");
+		output += retrieveAllChromebook(chromebookList);
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 		System.out.println(output);
 	}
 
@@ -181,6 +204,7 @@ public class ResourceCentre {
 
 		Camcorder cc = new Camcorder(tag, description, zoom);
 		return cc;
+<<<<<<< HEAD
 
 	}
 
@@ -206,13 +230,30 @@ public class ResourceCentre {
 		String os = Helper.readString("Enter operating system > ");
 
 		Chromebook cb = new Chromebook(tag, description, os);
+=======
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 
+	}
+
+	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
+
+		camcorderList.add(cc);
+
+	}
+
+	public static Chromebook inputChromebook() {
+		String tag = Helper.readString("Enter asset tag > ");
+		String description = Helper.readString("Enter description > ");
+		String os = Helper.readString("Enter operating system > ");
+
+		Chromebook cb = new Chromebook(tag, description, os);
 		return cb;
 
 	}
 
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 		// write your code here
+<<<<<<< HEAD
 		Chromebook item;
 		for (int i = 0; i < chromebookList.size(); i++) {
 			item = chromebookList.get(i);
@@ -223,6 +264,8 @@ public class ResourceCentre {
 			return;
 		}
 
+=======
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 		chromebookList.add(cb);
 	}
 
@@ -232,9 +275,12 @@ public class ResourceCentre {
 
 		boolean isLoaned = false;
 
+<<<<<<< HEAD
 		if (tag.isEmpty() || dueDate.isEmpty())
 			return false;
 
+=======
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 		for (int i = 0; i < camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 					&& camcorderList.get(i).getIsAvailable() == true) {
@@ -243,6 +289,7 @@ public class ResourceCentre {
 				camcorderList.get(i).setDueDate(dueDate);
 
 				isLoaned = true;
+
 			}
 		}
 		return isLoaned;
@@ -264,6 +311,7 @@ public class ResourceCentre {
 		// write your code here
 		boolean isLoaned = false;
 
+<<<<<<< HEAD
 		if (tag.isEmpty() || dueDate.isEmpty())
 			return false;
 
@@ -275,6 +323,17 @@ public class ResourceCentre {
 				chromebookList.get(i).setDueDate(dueDate);
 
 				isLoaned = true;
+=======
+		for (int i = 0; i < chromebookList.size(); i++) {
+			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+					&& chromebookList.get(i).getIsAvailable() == true) {
+
+				chromebookList.get(i).setIsAvailable(false);
+				chromebookList.get(i).setDueDate(dueDate);
+
+				isLoaned = true;
+
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 			}
 		}
 		return isLoaned;
@@ -291,6 +350,10 @@ public class ResourceCentre {
 		} else {
 			System.out.println("Chromebook " + tag + " loaned out");
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 	}
 
 	// ================================= Option 4 Return an item (CRUD -
@@ -298,9 +361,12 @@ public class ResourceCentre {
 	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
 		boolean isReturned = false;
 
+<<<<<<< HEAD
 		if (tag.isEmpty())
 			return false;
 
+=======
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 		for (int i = 0; i < camcorderList.size(); i++) {
 			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
 					&& camcorderList.get(i).getIsAvailable() == false) {
@@ -328,6 +394,7 @@ public class ResourceCentre {
 
 	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList, String tag) {
 		boolean isReturned = false;
+<<<<<<< HEAD
 		// write your code here
 		if (tag.isEmpty())
 			return false;
@@ -339,12 +406,22 @@ public class ResourceCentre {
 				chromebookList.get(i).setDueDate("");
 				isReturned = true;
 
+=======
+
+		for (int i = 0; i < chromebookList.size(); i++) {
+			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+					&& chromebookList.get(i).getIsAvailable() == false) {
+				chromebookList.get(i).setIsAvailable(true);
+				chromebookList.get(i).setDueDate("");
+				isReturned = true;
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
 			}
 		}
 		return isReturned;
 	}
 
 	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
+<<<<<<< HEAD
 		// write your code here
 		ResourceCentre.viewAllChromebook(chromebookList);
 		String tag = Helper.readString("Enter asset tag > ");
@@ -358,3 +435,17 @@ public class ResourceCentre {
 	}
 
 }
+=======
+		ResourceCentre.viewAllChromebook(chromebookList);
+		String tag = Helper.readString("Enter asset tag > ");
+		Boolean isReturned = doReturnChromebook(chromebookList, tag);
+
+		if (isReturned == false) {
+			System.out.println("Invalid asset tag");
+		} else {
+			System.out.println("Camcorder " + tag + " returned");
+
+		}
+	}
+}
+>>>>>>> branch 'master' of https://github.com/20033909/ResourceCentre_Student.git
